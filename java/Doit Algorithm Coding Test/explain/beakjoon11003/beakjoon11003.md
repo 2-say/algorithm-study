@@ -18,19 +18,20 @@ https://www.acmicpc.net/problem/11003
 
 진행과정을 순서대로 나열해보자.
 
+<img width="251" alt="image" src="https://github.com/2-say/algorithm-study/assets/91319157/df834fdd-2e46-44ea-b2aa-79e23d303837">
 
-<img width="250" alt="image" src="https://github.com/2-say/Algorithm_Study/assets/91319157/43003fb4-6427-4fd5-8493-eb150ba875af">
 
 L크기의 맞게 DeQueue를 만들자. 
 
 [1회전]
-<img width="838" alt="image" src="https://github.com/2-say/Algorithm_Study/assets/91319157/d0c8b2a8-a3f2-407f-af47-8677d89d467f">
+<img width="838" alt="image" src="https://github.com/2-say/algorithm-study/assets/91319157/4241be12-5b48-42ba-aa78-f9cb7196cf63">
+
 
 [2회전]
-<img width="857" alt="image" src="https://github.com/2-say/Algorithm_Study/assets/91319157/d14ffb2a-9e49-4801-9f81-1dacd624f330">
+<img width="857" alt="image" src="https://github.com/2-say/algorithm-study/assets/91319157/954de212-dac0-4717-931c-06e7768ab31a">
 
 [3회전]
-<img width="867" alt="image" src="https://github.com/2-say/Algorithm_Study/assets/91319157/d35b4d03-af06-403b-bd4d-6c5874865795">
+<img width="860" alt="image" src="https://github.com/2-say/algorithm-study/assets/91319157/9e45211c-52ae-420e-a139-ada1a381b392">
 
 - 2를 입력했을 때, 5>2 이므로 5는 삭제하고 2를 대입한다. 
 - window size(3) 을 벗어나면 맨 앞 원소를 삭제한다. 

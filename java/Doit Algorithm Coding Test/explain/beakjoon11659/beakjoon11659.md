@@ -22,7 +22,7 @@ System.out.println(arr[e]-arr[s-1]);
 파악하기 용이하도록 책에서 제시해준 공식 S[j]-S[i-1] 처럼 식을 만들었다.
 그렇게 만들기 위해서 구간합 0자리에 0을 넣어 아래와 같은 방식으로 더해가면서 값을 넣었다. 
 
-<img width="300" alt="image" src="https://github.com/2-say/Algorithm_Study/assets/91319157/49d119cf-c030-421b-a4d5-f88a226ce672">
+<img width="300" alt="image" src="https://github.com/2-say/algorithm_study/assets/91319157/49d119cf-c030-421b-a4d5-f88a226ce672">
 
 <br>
 

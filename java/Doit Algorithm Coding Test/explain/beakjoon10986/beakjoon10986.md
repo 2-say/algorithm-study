@@ -66,7 +66,7 @@ ex) s{1,3,6,7,9} 일때 3,6,9 원소는 더하지 않아도 그 자체로 만족
 
 M을 나눴을때 나올 수 있는 나머지는 0~M-1 이다. M-1 크기에 결과 배열을 만들어서 해당 값을 Count 해서 개수를 저장한다. 
 
-<img width="150" alt="image" src="https://github.com/2-say/Algorithm_Study/assets/91319157/062e1990-de8a-416b-8504-3f4c3d691052">
+<img width="172" alt="image" src="https://github.com/2-say/algorithm-study/assets/91319157/e01c5410-83ed-4241-9557-349bbf8adc38">
 
 <br><br>
 
@@ -100,7 +100,7 @@ M을 나눴을때 나올 수 있는 나머지는 0~M-1 이다. M-1 크기에 결
 
 콤비네이션 공식은 다음과 같다 
 
-<img width="250" alt="image" src="https://github.com/2-say/Algorithm_Study/assets/91319157/b249a435-00b0-4883-87f8-f21446beefbb">
+<img width="309" alt="image" src="https://github.com/2-say/algorithm-study/assets/91319157/76734f12-37ac-40af-897f-cb5b9876cce2">
 
 
 <br>

@@ -24,21 +24,19 @@ D[i][j] = D[i][j-1] + D[i-1][j] - D[i-1][j-1] + A[i][j]
 
 만약 구간합이 (0,0) 시작한다면, 공식의 의해 (0,-1) (-1,0) 찾게 되어 오류가 발생한다. 
 
-<img width="200" alt="image" src="https://github.com/2-say/Algorithm_Study/assets/91319157/e453a288-f1b9-489c-b7dc-f1563f2683b6">
+<img width="200" alt="image" src="https://github.com/2-say/algorithm-study/assets/91319157/c4f433e5-4374-40f2-805f-376bce2e3e63">
 
 <4 X 4 구간합 표>
 
 하지만 구간합의 배열크기를 늘려 구간합을 (1,1) 부터 시작한다면, 공식 그래돌 적용해도 아무 문제없이 계산할 수 있다. 
 
 
-<img width="200" alt="image" src="https://github.com/2-say/Algorithm_Study/assets/91319157/22b9fc64-82c7-482d-984e-f6c41e32f290">
+<img width="200" alt="image" src="https://github.com/2-say/algorithm-study/assets/91319157/4f33165a-26e1-48bf-9733-2cdcbed159eb">
 
 <5 X 5 구간합 표>
 
 
-
-
-<img width="200" alt="image" src="https://github.com/2-say/Algorithm_Study/assets/91319157/7b88f27b-5bda-49d1-9457-5eb214513d6a">
+<img width="200" alt="image" src="https://github.com/2-say/algorithm-study/assets/91319157/80c4f83e-ebd6-4954-899e-da746197870c">
 
 
 주어진 구간합 배열에서 위,아래를 더하고 대각선에 있는 중복값을 제거한다. 그 다음 원 배열자리에 값을 더하면 된다. 
@@ -73,12 +71,12 @@ D[i][j] = D[i][j-1] + D[i-1][j] - D[i-1][j-1] + A[i][j]
 
 ``` else if((j-1)<0 && (i-1)>=0) //j=0 0열 일경우 ```
 
-<img width="150" alt="image" src="https://github.com/2-say/Algorithm_Study/assets/91319157/3104bf60-3040-458e-9a5a-c3ad1e70565b">
+<img width="150" alt="image" src="https://github.com/2-say/algorithm-study/assets/91319157/44abcd10-c87c-466e-a3af-c6115d052a8e">
 
 
 ``` else if(i-1<0 && j-1>=0) //i=0 0행 일경우 ```
 
-<img width="150" alt="image" src="https://github.com/2-say/Algorithm_Study/assets/91319157/44f3c51a-e704-4335-927b-eb72b10012a9">
+<img width="150" alt="image" src="https://github.com/2-say/algorithm-study/assets/91319157/2cc3e1ae-c330-47db-8b05-a76e56cf5211">
 
 
 <br>

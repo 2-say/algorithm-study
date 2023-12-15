@@ -21,7 +21,8 @@ https://www.acmicpc.net/problem/1253
 ---
 - 정렬 필요
 
-<img width="300" alt="image" src="https://github.com/2-say/Algorithm_Study/assets/91319157/4366aa07-311f-453a-95aa-b6c751179e39">
+<img width="300" alt="image" src="https://github.com/2-say/algorithm-study/assets/91319157/0fb0dbc3-f34a-435b-be93-95c7fe5a3e1e">
+
 
 양쪽을 포인터를 지정한다. Start + End 값을 더해서 찾는 값보다 크다면 end를 낮춰 값을 낮추고 작다면 start를 늘려 값을 키운다. 
 
@@ -79,7 +80,7 @@ start 포인터가 end 포인터를 지나치지 않기위해 While(i<j) 조건�
 
 만약, 위 조건이 아닌경우에는 못찾더라도 정상 동작해야하기 때문에   i == a , j == a 일 경우로 정상 작동 하도록 만들었다. 
 
-<img width="285" alt="image" src="https://github.com/2-say/Algorithm_Study/assets/91319157/95356561-10d1-4a52-be8a-b4f044cb5fd0">
+<img width="292" alt="image" src="https://github.com/2-say/algorithm-study/assets/91319157/aaf3f499-793f-4461-a7af-477f68458e37">
 
 
 <br>

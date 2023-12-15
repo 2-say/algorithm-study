@@ -1,4 +1,3 @@
-package no_explain.beakjoon17298;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
