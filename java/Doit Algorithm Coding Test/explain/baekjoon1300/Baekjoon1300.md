@@ -1,3 +1,7 @@
+Do it! 알고리즘 코딩 테스트: 자바편 
+
+https://www.acmicpc.net/problem/1300
+
 ### 풀이
 ---
 ### 📄 1단계 문제 분석하기
