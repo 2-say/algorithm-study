@@ -2,7 +2,7 @@ package no_explain.beakjoon1152;
 import java.util.Scanner;
 import java.util.StringTokenizer;
  
-public class beakjoon1152 { 
+public class Main { 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
  
