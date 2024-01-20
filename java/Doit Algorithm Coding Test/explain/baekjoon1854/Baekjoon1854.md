@@ -14,9 +14,9 @@ https://www.acmicpc.net/problem/1854
 
 ### 🤘 2단계 손으로 풀기
 ---
-다익스트라에서 K번째를 도입하는 방법을 적용하면된다!
+다익스트라에서 K번째를 도입하는 방법을 적용하면된다! <br>
 <img width="433" alt="image" src="https://github.com/2-say/algorithm-study/assets/91319157/67bb36b5-1125-4dbf-8e88-e37b83479ed3">
-
+<br>
 - 각 도시의 K번째를 구해야한다. 
 - K번째는 큰 수부터 정렬되어야 한다. (내림차순)
 그렇다면!! Priority<Integer>로 구성되어있는 배열을 만들면 되겠다!
