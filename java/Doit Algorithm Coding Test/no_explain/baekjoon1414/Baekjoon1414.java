@@ -22,7 +22,8 @@ public class Baekjoon1414 {
 
         @Override
         public int compareTo(Node o) {
-            return this.cost - o.cost;
+            return Integer.compare(cost, o.cost);
+            // return this.cost - o.cost;
         }
     }
 
@@ -50,7 +51,8 @@ public class Baekjoon1414 {
                 }
             }
         }
-
+        
+        
         int 사용한비용 = kruskal();
 
         int check = find(unionArr[0]);
