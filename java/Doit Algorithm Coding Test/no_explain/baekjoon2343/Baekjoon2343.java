@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class Baekjoon2342 {
+public class Baekjoon2343 {
     static int[] arr;
     static int n;
 
