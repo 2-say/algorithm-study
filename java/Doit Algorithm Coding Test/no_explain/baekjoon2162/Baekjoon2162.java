@@ -56,6 +56,7 @@ public class Baekjoon2162 {
             lineList.add(line);
         }
 
+        
         for (int i = 0; i < lineList.size() - 1; i++) {
             for (int j = i + 1; j < lineList.size(); j++) {
                 checkTwoLineSameGroup(lineList.get(i), lineList.get(j));
