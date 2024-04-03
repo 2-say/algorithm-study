@@ -26,7 +26,7 @@ class Solution {
             giftPoint[findRow][0]++;
             giftPoint[findCol][1]++;
         }
-
+        
         // 선물 지수
         for (int i = 0; i < friends.length; i++) {
             giftPoint[i][2] = giftPoint[i][0] - giftPoint[i][1];
