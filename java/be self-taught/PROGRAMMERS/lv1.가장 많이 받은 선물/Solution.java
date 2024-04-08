@@ -30,7 +30,7 @@ class Solution {
         // 선물 지수
         for (int i = 0; i < friends.length; i++) {
             giftPoint[i][2] = giftPoint[i][0] - giftPoint[i][1];
-        }
+        } 
 
         for (int i = 0; i < friends.length; i++) {
 
