@@ -4,13 +4,14 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class Main {
-    static boolean[] visited;
+
     static int N;
     static int E;
     static int min;
     static List<Cost> edges[];
-    private static int INF = 200000000;
-    static int[] costMap;
+    static boolean[] visited;
+    static int[][] costMap;
+    static int INF = 200000000;
 
     static class Cost implements Comparable<Cost> {
         int node;
@@ -52,51 +53,50 @@ public class Main {
         int v1 = Integer.parseInt(st.nextToken());
         int v2 = Integer.parseInt(st.nextToken());
 
-        costMap = new int[N + 1];
+        costMap = new int[N + 1][N + 1];
         min = Integer.MAX_VALUE;
 
-        int ans1 = 0;
-        ans1 += dijkstra(1, v1);
-        ans1 += dijkstra(v1, v2);
-        ans1 += dijkstra(v2, N);
+        // 초기화
+        for (int i = 0; i < N + 1; i++) {
+            for (int j = 0; j < N + 1; j++) {
+                costMap[i][j] = INF;
+            }
+        }
 
-        int ans2 = 0;
-        ans2 += dijkstra(1, v2);
-        ans2 += dijkstra(v2, v1);
-        ans2 += dijkstra(v1, N);
+        dijkstra(1);
+        dijkstra(v1);
+        dijkstra(v2);
 
-        int Ans = 0;
-        if (ans1 >= INF && ans2 >= INF)
-            Ans = -1;
-        else
-            Ans = Math.min(ans1, ans2);
-
-        System.out.println(Ans);
-
+        long answer = 0;
+        answer = Math.min(costMap[1][v2] + costMap[v2][v1] + costMap[v1][N],
+                costMap[1][v1] + costMap[v1][v2] + costMap[v2][N]);
+        if (answer >= INF) {
+            System.out.println(-1);
+        } else {
+            System.out.println(answer);
+        }
     }
 
-    public static int dijkstra(int start, int end) {
-        visited = new boolean[N + 1];
-        Arrays.fill(costMap, INF);
-
+    public static void dijkstra(int start) {
         Queue<Cost> que = new PriorityQueue<>();
+        visited = new boolean[N + 1];
+
         que.add(new Cost(start, 0));
-        costMap[start] = 0;
+        costMap[start][start] = 0;
 
         while (!que.isEmpty()) {
             Cost curr = que.poll();
 
-            if (visited[curr.node]) continue;
+            if (visited[curr.node])
+                continue;
             visited[curr.node] = true;
 
             for (Cost next : edges[curr.node]) {
-                // 다음노드
-                if (costMap[next.node] > costMap[curr.node] + next.cost) {
-                    costMap[next.node] = costMap[curr.node] + next.cost;
-                    que.add(new Cost(next.node, costMap[next.node]));
+                if (costMap[start][next.node] > costMap[start][curr.node] + next.cost) {
+                    costMap[start][next.node] = costMap[start][curr.node] + next.cost;
+                    que.add(new Cost(next.node, costMap[start][next.node]));
                 }
             }
         }
-        return costMap[end];
     }
 }
