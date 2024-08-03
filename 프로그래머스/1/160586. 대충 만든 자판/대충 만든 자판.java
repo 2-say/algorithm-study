@@ -5,10 +5,8 @@ class Solution {
         
         int score = 0;
         
-        
         for(String a : targets) {
             for(String b : a.split("")) {
-                //A B C D 
                 boolean isFound = false;
                 int temp = Integer.MAX_VALUE;
                 
