@@ -11,20 +11,18 @@ class Main {
         nums = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
         Arrays.sort(nums);
         M = Integer.parseInt(br.readLine());
-
         int answer = binarySearch(0, nums[nums.length-1]);
         if(M < calcTotal(answer)) answer--;
         System.out.println(answer);
     }
+    
     static int binarySearch(int s, int e) {
         while(s < e) {
             int mid = (s + e)/2;
-
             if(M == calcTotal(mid)) return mid;
             else if(M > calcTotal(mid)) s = mid + 1;
             else e = mid;
         }
-
         return s;
     }
     
