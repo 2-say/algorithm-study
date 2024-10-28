@@ -1,43 +1,35 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.util.*;
+import java.io.*;
 
-public class Main {
+class Main {
 
-    static int[][] list;
-
+    static int[][] map;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
+        int N = Integer.parseInt(br.readLine());
+        map = new int[N][N];
 
-        list = new int[n][n];
-        for(int i = 0 ; i < n ; i++){
-            String[] input = br.readLine().split(" ");
-            for(int j = 0 ; j < n ; j++){
-                if(input[j].charAt(0) == '1'){
-                    list[i][j] = 1;
-                }
-                else list[i][j] = 0;
-            }
-        }
-        for(int k = 0; k < n ; k++){
-            for(int i = 0 ; i < n ; i++){
-                for(int j = 0; j < n; j++){
-                    if( list[i][k] == 1  && list[k][j] == 1){
-                        list[i][j] = 1;
+        for(int i = 0; i < N; i++) 
+            map[i] = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        
+        for(int k = 0; k < N; k++) {
+            for(int i = 0; i < N; i++) {
+                for(int j = 0; j < N; j++) {
+                    if(map[i][k] == 1 && map[k][j] == 1) {
+                        map[i][j] = 1;
                     }
                 }
             }
         }
 
-
-        //출력
-        for(int i = 0; i < n ; i++){
-            for(int j= 0; j< n; j++){
-                System.out.printf("%d ",list[i][j]);
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0 ; i < N; i++) {
+            for( int j = 0; j < N; j++) {
+                sb.append(map[i][j]).append(" ");
             }
-            System.out.println();
+            sb.append("\n");
         }
+
+        System.out.println(sb);
     }
 }
