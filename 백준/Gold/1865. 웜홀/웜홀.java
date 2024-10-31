@@ -1,96 +1,79 @@
-import java.io.*;
 import java.util.*;
- 
-public class Main {
+import java.io.*;
 
-    static List<Edge> nList;
-    static int dis[];
-    static boolean[] visited;
+class Main {
+
+    static int N, M, W;
+    static List<Edge> eList;
+    static int[] dist;
+    static final int MAX_VALUE = 999_999;
 
     static class Edge {
-        int s;
-        int e;
-        int cost;
-
-        Edge(int s,int e, int cost) {
-            this.s = s;
-            this.e = e;
+        int w, v, cost;
+        Edge(int w, int v, int cost) {
+            this.w = w;
+            this.v = v;
             this.cost = cost;
         }
     }
- 
-	public static void main(String[] args) throws IOException {
+
+
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
         int tc = Integer.parseInt(br.readLine());
-        
-        for(int i = 0; i < tc; i++) {
+        StringBuilder sb = new StringBuilder();
+        while(tc-- > 0) {
             StringTokenizer st = new StringTokenizer(br.readLine());
-            int N = Integer.parseInt(st.nextToken());
-            int M = Integer.parseInt(st.nextToken());
-            int W = Integer.parseInt(st.nextToken());
+            N = Integer.parseInt(st.nextToken());
+            M = Integer.parseInt(st.nextToken());
+            W = Integer.parseInt(st.nextToken());
 
-            nList = new ArrayList();
+            eList = new ArrayList<>();
+            dist = new int[N];
             
-            for(int j = 0; j < M + W; j++) {
+            for(int i = 0; i < N; i++) Arrays.fill(dist, MAX_VALUE);
+            dist[0] = 0;
+
+            for(int i = 0; i < M; i++) {
                 st = new StringTokenizer(br.readLine());
-                int v = Integer.parseInt(st.nextToken());
-                int w = Integer.parseInt(st.nextToken());
-                int cost = Integer.parseInt(st.nextToken());
-
-                if(j < M) {
-                    nList.add(new Edge(v,w,cost));
-                    nList.add(new Edge(w,v,cost));
-                } else {
-                    nList.add(new Edge(v,w,-cost));
-                }
+                int S = Integer.parseInt(st.nextToken()) - 1;
+                int E = Integer.parseInt(st.nextToken()) - 1;
+                int T = Integer.parseInt(st.nextToken());
+                eList.add(new Edge(S,E,T));
+                eList.add(new Edge(E,S,T));
             }
 
-            String tmp = "NO";
-            for(int k = 1 ; k <= N; k++) {
-                dis = new int[N+1];
-                Arrays.fill(dis, Integer.MAX_VALUE);
-                if(bellManFord(N,M,k).equals("YES")){
-                    tmp = "YES";
-                    break;
-                }
+            for(int i = 0; i < W; i++) {
+                st = new StringTokenizer(br.readLine());
+                int S = Integer.parseInt(st.nextToken()) - 1;
+                int E = Integer.parseInt(st.nextToken()) - 1;
+                int T = Integer.parseInt(st.nextToken());
+                eList.add(new Edge(S, E, -T));
             }
-
-            System.out.println(tmp);
+            
+            sb.append(bellman()).append("\n");
         }
+        System.out.println(sb);
     }
 
-
-    static String bellManFord(int N, int M, int start) {
-        dis[start] = 0;
-        boolean check;
+    static String bellman() {
+        //n-1만큼 업데이트 진행한다.
+        for(int i = 0; i < N-1; i++) {
+            for(Edge e : eList) {
+                if(dist[e.v] > dist[e.w] + e.cost) {
+                    dist[e.v] = dist[e.w] + e.cost;
+                }
+            }
+        }
 
         for(int i = 0; i < N; i++) {
-            check = false;
-
-            for(int j = 0; j < nList.size(); j++) {
-                Edge eg = nList.get(j);
-
-                if(dis[eg.s] != Integer.MAX_VALUE &&  dis[eg.e] > dis[eg.s] + eg.cost) {
-                    dis[eg.e] = dis[eg.s] + eg.cost;
-                    check = true;
+            for(Edge e : eList) {
+                if(dist[e.v] > dist[e.w] + e.cost) {
+                    return "YES";
                 }
             }
-            
-            if(!check) break;
         }
-       
-
-
-        //한번 더 경로 업데이트가 일어나면 음수가중치가 있다.
-        for(int j = 0; j < nList.size(); j++) {
-            Edge eg = nList.get(j);
-
-            if(dis[eg.s] != Integer.MAX_VALUE &&  dis[eg.e] > dis[eg.s] + eg.cost) {
-                return "YES";
-            }
-        }
-
         return "NO";
     }
-    
 }
