@@ -1,42 +1,47 @@
 import java.util.*;
 
 class Solution {
-    static int[] dy = {0,0,1,-1}, dx ={1,-1,0,0};
-    static boolean[][] visited;
+    int[][] MAP;
+    int[] dy = {1, -1, 0, 0};
+    int[] dx = {0, 0, 1, -1};
+    boolean[][] visited;
     
-    public int bfs(int[][] maps) {
-        int answer = Integer.MAX_VALUE;
-        Queue<int[]> q = new ArrayDeque<>();
+    public int solution(int[][] maps) {
+        MAP = maps;
         visited = new boolean[maps.length][maps[0].length];
-        q.add(new int[]{0, 0, 0});
+        return bfs();
+    }
+    
+    public int bfs() {
+        Queue<int[]> q = new ArrayDeque<>();
+        q.add(new int[] {0, 0, 1});
         visited[0][0] = true;
         
         while(!q.isEmpty()) {
             int[] cur = q.poll();
-            
-            if(cur[0] == maps.length-1 && cur[1] == maps[0].length-1) {
-                answer = Math.min(answer, cur[2]);
-            }
+            int curY = cur[0];
+            int curX = cur[1];
+            int dis = cur[2];
             
             for(int i = 0; i < 4; i++) {
-                int ny = cur[0] + dy[i];
-                int nx = cur[1] + dx[i];
+                int nx = curX + dx[i]; 
+                int ny = curY + dy[i]; 
                 
-                if(!isValid(ny, nx, maps) || visited[ny][nx]) continue;
+                if(ny == MAP.length - 1 && nx == MAP[0].length - 1) {
+                    return dis + 1;
+                }
                 
-                visited[ny][nx] = true;
-                q.add(new int[]{ny, nx, cur[2] + 1});
+                if(isValid(nx, ny) && !visited[ny][nx]) {
+                    visited[ny][nx] = true;
+                    q.add(new int[] {ny, nx, dis + 1});
+                }
             }
         }
         
-        return (answer == Integer.MAX_VALUE) ? -1 : answer+1;
+        return -1;
     }
     
-    public boolean isValid(int y, int x, int[][] maps) {
-        return x >= 0 && y>= 0 && y < maps.length && x < maps[0].length && maps[y][x] != 0;
-    }
-     
-    public int solution(int[][] maps) {
-        return bfs(maps);
+    public boolean isValid(int x, int y) {
+        return x >= 0 && y >= 0 && x < MAP[0].length && y < MAP.length && MAP[y][x] != 0;
     }
 }
