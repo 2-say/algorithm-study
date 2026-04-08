@@ -1,37 +1,43 @@
 import java.util.*;
 
 class Solution {
-    static boolean[] visited;
+    int[][] C;
+    int N;
+    boolean[] visited;
     
     public int solution(int n, int[][] computers) {
-        visited = new boolean[computers.length];
+        C = computers;
+        N = n;
+        
         int answer = 0;
-        for(int i = 0; i < computers.length; i++) {
+        visited = new boolean[N];
+        
+        for(int i = 0; i < N; i++) {
             if(!visited[i]) {
+                dfs(i);
                 answer++;
-                dfs(i, computers);
             }
         }
+        
         return answer;
     }
     
-    public void dfs(int s, int[][] computers) {
-        Stack<Integer> stac = new Stack<>();
-        stac.add(s);
+    public void dfs(int s) {
+        Stack<Integer> stac = new Stack();
         visited[s] = true;
+        stac.push(s);
         
         while(!stac.isEmpty()) {
             int cur = stac.pop();
             
-            for(int i = 0; i < computers.length; i++) {
-                if(i != cur && computers[cur][i] == 1) {
-                    if(!visited[i]) {
-                        stac.add(i);
-                        visited[i] = true;
-                    }   
+            for(int i = 0; i < N; i++) {
+                if(i == cur || C[cur][i] == 0) continue;
+                
+                if(!visited[i]) {
+                    visited[i] = true;
+                    stac.push(i);
                 }
             }
         }
     }
-    
 }
