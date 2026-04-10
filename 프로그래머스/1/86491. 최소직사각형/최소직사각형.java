@@ -2,19 +2,13 @@ import java.util.*;
 
 class Solution {
     public int solution(int[][] sizes) {
-        int answer = 0;
+        int mW = 0, mH = 0;
+        for(int[] s : sizes) Arrays.sort(s);
         for(int[] s : sizes) {
-            Arrays.sort(s);
+            mW = Math.max(mW, s[0]);
+            mH = Math.max(mH, s[1]);
         }
         
-        int max1 = 0;
-        int max2 = 0;
-        
-        for(int[] s: sizes) {
-            if(max1 <= s[0]) max1 = s[0];
-            if(max2 <= s[1]) max2 = s[1];
-        }
-        
-        return max1 * max2;
+        return mW * mH ;
     }
 }
