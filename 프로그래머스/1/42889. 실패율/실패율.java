@@ -1,41 +1,24 @@
 import java.util.*;
 
 class Solution {
-    static class Stage {
-        int n;
-        double faP;
-        Stage(int n, double faP) {
-            this.n = n;
-            this.faP = faP;
-        }
-    }
-    
     public int[] solution(int N, int[] stages) {
-        Queue<Stage> pq = new PriorityQueue<>((o1, o2) -> {
-            if (Double.compare(o2.faP, o1.faP) == 0) return Integer.compare(o1.n, o2.n);
-            return Double.compare(o2.faP, o1.faP);
-        });
+        double[][] record = new double[N+2][2];
         
-
-        for (int i = 1; i <= N; i++) {
-            int clearFailPlayer = 0;
-            int reachPlayer = 0;
-            for (int s : stages) {
-                if (i == s) {
-                    clearFailPlayer++;
-                    reachPlayer++;
-                } else if (i < s) {
-                    reachPlayer++;
-                }
-            }
-            double failP = (reachPlayer == 0) ? 0 : (double) clearFailPlayer / reachPlayer;
-            pq.add(new Stage(i, failP));
+        for(int s : stages) {
+            record[s][0]++;
+            for(int j = s; j >= 1; j--) record[j][1]++;
         }
-
-        // 결과 배열 생성
-        int[] result = new int[N];
-        int idx = 0;
-        while (!pq.isEmpty()) result[idx++] = pq.poll().n;
-        return result;
+        
+        Map<Integer, Double> m = new HashMap<>();
+        for(int i = 1; i <= N; i++) {
+             double rate = record[i][1] == 0 ? 0 : record[i][0] / record[i][1];
+            m.put(i, rate);
+        }
+        
+        return m.entrySet().stream()
+            .sorted(Map.Entry.<Integer, Double>comparingByValue(Comparator.reverseOrder())
+            .thenComparing(Map.Entry.comparingByKey()))
+            .mapToInt(Map.Entry::getKey)
+            .toArray();
     }
 }
