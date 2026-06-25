@@ -4,19 +4,18 @@ class Solution
 {
     public int solution(String s)
     {
-        int[] alpha = new int[140]; //abcdefghijklmopqrstuvwxyz
-        Stack<Character> stac = new Stack<>();
-        char[] cArr = s.toCharArray();
-        
-        for(int i = 0; i < s.length(); i++) {
-            if(!stac.isEmpty() && stac.peek() == cArr[i]) {
+        Stack<Character> stac = new Stack();
+        char[] cs = s.toCharArray();
+        for(char c : cs) {
+            
+            if(!stac.isEmpty() && c == stac.peek()) {
                 stac.pop();
             } else {
-                stac.add(cArr[i]);
+                stac.add(c);
             }
         }
         
-        if(!stac.isEmpty()) return 0;
-        return 1;
+        if(stac.isEmpty()) return 1;
+        return 0;
     }
 }
